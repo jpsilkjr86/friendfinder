@@ -5,7 +5,7 @@ const path = require('path');
 
 // set up express app
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 // set up body parser
 app.use(bodyParser.json());
