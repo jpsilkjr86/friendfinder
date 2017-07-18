@@ -13,11 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-// routes
-app.get('/', (req, res) => {
-	res.json({test: 'test'});
-});
-
+// function extensions for routing
+require('./app/routing/htmlroutes.js')(app);
+require('./app/routing/apiroutes.js')(app);
 
 // listens to port
 app.listen(port, () => {
