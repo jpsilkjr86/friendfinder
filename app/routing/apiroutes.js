@@ -9,8 +9,9 @@ module.exports = function(app, path, friends) {
 	// POST route at api/friends
 	app.post('/api/friends', (req, res) => {
 		let newProfile = req.body;
-		console.log(req.body);
-		res.json(newProfile);
+		// res.json(newProfile);
 		friends.push(newProfile);
+		console.log(friends);
+		res.send(friends);
 	});
 };

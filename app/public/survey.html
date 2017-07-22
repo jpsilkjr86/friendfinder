@@ -21,6 +21,9 @@
         margin-bottom: 20px;
       }
     </style>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -38,11 +41,11 @@
               <form id="profile-form">
                 <div class="form-group">
                   <label for="userName">Your name:</label>
-                  <input type="text" class="form-control" id="userName">
+                  <input type="text" class="form-control" id="userName" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Your Email Address:</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" required>
                 </div>
                 <p>Please rate each answer on a scale of 1 to 5.</p>
                 <ol>
@@ -253,9 +256,25 @@
           </div> <!-- End of panel -->
         </div> <!-- End of column -->
       </div> <!-- End of row -->
+      <!-- Modal -->
+      <div id="matchModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="modal-title"></h4>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- End of Modal -->
     </div> <!--End of Container-->
 
-    <script src="https://code.jquery.com/jquery.js"></script>
     <script type="text/javascript">
       // grabs values from form when submit is clicked
       $("#profile-form").on("submit", function(event) {
@@ -279,11 +298,30 @@
           score: score
         }
 
+        // sends newProfile as ajax post request to server
         $.post("/api/friends", newProfile)
-        .done(function(data) {
-          console.log(data);
-          
-        }); // end of ajax.post
+          // promise handler for response data
+          .done(function(data) {
+            console.log(data.length);
+            console.log(data);
+            if (data.length < 2) {
+              $('#modal-title').text('Congratulations!');
+              $('#modal-body').html('<p>We will let you know when we find a match for you!</p>');
+              $('#matchModal').modal('show');
+            }
+            else {
+              let matchProfile = data;
+              $('#modal-title').text('Match found!');
+              let matchInfo = $('<p>');
+              matchInfo.append("Your match details:<br>")
+                .append('Name: ' + matchProfile.name + '<br>')
+                .append('Email: ' + matchProfile.email + '<br><br>')
+                .append('What are you waiting for? Send an email!');
+              $('#matchModal').modal('show');
+            }
+
+          } // end of promise
+        ); // end of ajax.post
       }); // end of form submit handler
 
       
