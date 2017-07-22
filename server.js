@@ -16,7 +16,9 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 // grabs friends from friends.js
 const friends = require('./app/data/friends.js');
 
-// function extensions for routing
+// function extensions for routing. sends app, path, friends as
+// arguments so that only one instance of each of those modules 
+// needs to be created.
 require('./app/routing/htmlroutes.js')(app, path, friends);
 require('./app/routing/apiroutes.js')(app, path, friends);
 

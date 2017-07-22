@@ -7,29 +7,287 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Link to Bootstrap -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+      .logo-img {
+        /*width: 100%;*/
+        background-image: url("/images/friendbkg.jpg");
+        /*height: 300px;*/
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        border-radius: 5px;
+        padding: 25px;
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <!-- Header -->
-      <div class="text-center bg-primary" style="border-radius: 5px">
-        <h1 style="padding: 25px"><i>FRIEND FINDER</i></h1>
+      <div class="logo-img">
+        <h1 style="color: #eee; font-size: 4em; text-shadow: 2px 2px 2px #111">Friend Finder</h1>
       </div>
-
+      <!-- main content -->
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-sm-12">
           <div class="panel panel-success">
-            <div class="panel-heading">
-              <h3>Survey</h3>
-            </div>
+            <div class="panel-heading">Your Profile</div>
             <div class="panel-body">
-              <p>some text</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+              <form id="profile-form">
+                <div class="form-group">
+                  <label for="userName">Your name:</label>
+                  <input type="text" class="form-control" id="userName">
+                </div>
+                <div class="form-group">
+                  <label for="email">Your Email Address:</label>
+                  <input type="email" class="form-control" id="email">
+                </div>
+                <p>Please rate each answer on a scale of 1 to 5.</p>
+                <ol>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Long walks on the beach are more enjoyable than Netflix.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="one" id="1one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="one" id="1two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="one" id="1three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="one" id="1four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="one" id="1five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>You would describe yourself more as a "blah" person than a "meh" person.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="two" id="2one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="two" id="2two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="two" id="2three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="two" id="2four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="two" id="2five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Astrology is nonsense.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="three" id="3one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="three" id="3two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="three" id="3three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="three" id="3four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="three" id="3five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Greedo shot first.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="four" id="4one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="four" id="4two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="four" id="4three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="four" id="4four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="four" id="4five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Star Trek is better than Star Wars.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="five" id="5one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="five" id="5two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="five" id="5three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="five" id="5four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="five" id="5five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>If I don't travel for a month my soul feels empty.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="six" id="6one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="six" id="6two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="six" id="6three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="six" id="6four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="six" id="6five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Security is more important than novelty.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="seven" id="7one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="seven" id="7two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="seven" id="7three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="seven" id="7four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="seven" id="7five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Theory is more interesting to me than practical application.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="eight" id="8one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="eight" id="8two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="eight" id="8three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="eight" id="8four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="eight" id="8five" value="5">Strongly Agree
+                        </label>
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Everything can be quantified.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="nine" id="9one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="nine" id="9two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="nine" id="9three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="nine" id="9four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="nine" id="9five" value="5">Strongly Agree
+                        </label>
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend><li>Chaos is the natural state of being.</li></legend>
+                        <label class="radio-inline">
+                          <input type="radio" name="ten" id="10one" value="1">Strongly Disagree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="ten" id="10two" value="2">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="ten" id="10three" value="3" checked="checked">Neutral
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="ten" id="10four" value="4">Somewhat Agree
+                        </label>
+                         <label class="radio-inline">
+                          <input type="radio" name="ten" id="10five" value="5">Strongly Agree
+                        </label>
+                    </fieldset> 
+                  </div>
+                </ol>
+                <input class="btn btn-success" type="submit" value="Submit">
+              </form>
+            </div> <!-- End of panel-body -->
+          </div> <!-- End of panel -->
+        </div> <!-- End of column -->
+      </div> <!-- End of row -->
     </div> <!--End of Container-->
-    
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+      // grabs values from form when submit is clicked
+      $("#profile-form").on("submit", function(event) {
+        event.preventDefault();
+        // grabs name and email address
+        let name = $('#userName').val().trim();
+        let email = $('#email').val().trim();
+        // instantiates locally scoped variables
+        const allradios = $('[type=radio]');
+        const score = [];
+        // loops through radio values and saves the values that are checked
+        for (let i = 0; i < allradios.length; i++) {
+          if (allradios[i].checked) {
+            score.push(allradios[i].value);
+          }
+        }
+
+        let newProfile = {
+          name: name,
+          email: email,
+          score: score
+        }
+
+        $.post("/api/friends", newProfile)
+        .done(function(data) {
+          console.log(data);
+          
+        }); // end of ajax.post
+      }); // end of form submit handler
+
+      
+        
+    </script>
   </body>
 </html>
