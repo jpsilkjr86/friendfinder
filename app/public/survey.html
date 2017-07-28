@@ -282,13 +282,13 @@
         // grabs name and email address
         let name = $('#userName').val().trim();
         let email = $('#email').val().trim();
-        // instantiates locally scoped variables
-        const allradios = $('[type=radio]');
+        // instantiates locally scoped variables, grabs all radio values and saves in allRadios
+        const allRadios = $('[type=radio]');
         const score = [];
         // loops through radio values and saves the values that are checked
-        for (let i = 0; i < allradios.length; i++) {
-          if (allradios[i].checked) {
-            score.push(allradios[i].value);
+        for (let i = 0; i < allRadios.length; i++) {
+          if (allRadios[i].checked) {
+            score.push(allRadios[i].value);
           }
         }
 
@@ -296,30 +296,32 @@
           name: name,
           email: email,
           score: score
-        }
+        };
 
         // sends newProfile as ajax post request to server
         $.post("/api/friends", newProfile)
           // promise handler for response data
           .done(function(data) {
-            console.log(data.length);
             console.log(data);
-            if (data.length < 2) {
+            console.log(data.hasOwnProperty('email'));
+            // if data is an empty object, display standing by modal
+            if (!data.hasOwnProperty('email')) {
               $('#modal-title').text('Congratulations!');
               $('#modal-body').html('<p>We will let you know when we find a match for you!</p>');
               $('#matchModal').modal('show');
             }
+            // display modal according to match data
             else {
-              let matchProfile = data;
+              let match = data;
               $('#modal-title').text('Match found!');
               let matchInfo = $('<p>');
               matchInfo.append("Your match details:<br>")
-                .append('Name: ' + matchProfile.name + '<br>')
-                .append('Email: ' + matchProfile.email + '<br><br>')
+                .append('Name: ' + match.name + '<br>')
+                .append('Email: ' + match.email + '<br><br>')
                 .append('What are you waiting for? Send an email!');
+              $('#modal-body').html(matchInfo);
               $('#matchModal').modal('show');
             }
-
           } // end of promise
         ); // end of ajax.post
       }); // end of form submit handler

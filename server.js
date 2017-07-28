@@ -13,14 +13,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-// grabs friends from friends.js
-const friends = require('./app/data/friends.js');
+// grabs friendFinder from friends.js
+const friendFinder = require('./app/data/friends.js');
 
-// function extensions for routing. sends app, path, friends as
+// function extensions for routing. sends app, path, friendFinder as
 // arguments so that only one instance of each of those modules 
 // needs to be created.
-require('./app/routing/htmlroutes.js')(app, path, friends);
-require('./app/routing/apiroutes.js')(app, path, friends);
+require('./app/routing/htmlroutes.js')(app, path, friendFinder);
+require('./app/routing/apiroutes.js')(app, path, friendFinder);
 
 // listens to port
 app.listen(port, () => {
